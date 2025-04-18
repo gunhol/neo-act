@@ -14,6 +14,16 @@ function hideResizeHandle() {
   document.documentElement.classList.remove("resizeHandle")
 }
 
+function round(value, precision) {
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+}
+
+function formatAccuracy(value) {
+  if (value === '100.00') return '';
+  return round(value, 1).toFixed(1) + '%';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const q = new URLSearchParams(this.location.search);
 
@@ -98,21 +108,21 @@ function updateDPSMeter(data) {
     name.className = 'dps-bar-label'
     name.textContent = combatant.name
 
-    const damage = document.createElement('span')
-    damage.className = 'dps-bar-damage'
-    damage.textContent = nf.format(currentDamage)
+    const critrate = document.createElement('span')
+    critrate.className = 'dps-bar-critrate'
+    critrate.textContent = combatant['crithit%'] ? combatant['crithit%'] : '0%'
 
     const tohit = document.createElement('span')
     tohit.className = 'dps-bar-tohit'
-    tohit.textContent = combatant['tohit'] ? combatant['tohit'] + '%' : '0%' // Append % to tohit
+    tohit.textContent = combatant['tohit'] ? formatAccuracy(combatant['tohit']) : ''
 
     const dps = document.createElement('span')
     dps.className = 'dps-bar-value'
     dps.textContent = `${nf.format(combatant.DPS === '∞' ? 0 : combatant.DPS)}/sec`
 
     barContent.appendChild(name)
-    barContent.appendChild(damage)
     barContent.appendChild(tohit)
+    barContent.appendChild(critrate)
     barContent.appendChild(dps)
     dpsBar.appendChild(gradientBg)
     dpsBar.appendChild(barContent)

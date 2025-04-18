@@ -121,7 +121,7 @@ a {
   border: 0.0625rem solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
-  width: 22rem; /* Increased width to fit ToHit % and keep border visible */
+  width: 19rem;
   color: white;
   height: auto;
 }
@@ -178,12 +178,12 @@ a {
   flex: 1; /* Name takes available space */
 }
 
-.dps-bar-damage {
+.dps-bar-critrate {
   font-size: 0.875rem;
   color: #ffcc00; /* Yellow for visibility */
   text-shadow: -0.0625rem -0.0625rem 0 #000, 0 -0.0625rem 0 #000, 0.0625rem -0.0625rem 0 #000, 0.0625rem 0 0 #000, 0.0625rem 0.0625rem 0 #000, 0 0.0625rem 0 #000, -0.0625rem 0.0625rem 0 #000, -0.0625rem 0 0 #000;
   margin-right: 0.5rem;
-  width: 4.5rem; /* Slightly increased for large damage numbers */
+  width: 2rem;
   text-align: right;
 }
 
@@ -192,7 +192,7 @@ a {
   color: #66ccff; /* Light blue for visibility */
   text-shadow: -0.0625rem -0.0625rem 0 #000, 0 -0.0625rem 0 #000, 0.0625rem -0.0625rem 0 #000, 0.0625rem 0 0 #000, 0.0625rem 0.0625rem 0 #000, 0 0.0625rem 0 #000, -0.0625rem 0.0625rem 0 #000, -0.0625rem 0 0 #000;
   margin-right: 0.5rem;
-  width: 3rem;
+  width: 2.5rem;
   text-align: right;
 }
 
