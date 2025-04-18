@@ -20,6 +20,7 @@ function round(value, precision) {
 }
 
 function formatAccuracy(value) {
+  value = value.replace(/,/g, '.'); // handle comma-decimals
   if (value === '100.00') return '';
   return round(value, 1).toFixed(1) + '%';
 }
