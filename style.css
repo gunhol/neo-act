@@ -121,7 +121,7 @@ a {
   border: 0.0625rem solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
-  width: 18rem; /* Increased width to accommodate total damage */
+  width: 22rem; /* Increased width to fit ToHit % and keep border visible */
   color: white;
   height: auto;
 }
@@ -182,8 +182,17 @@ a {
   font-size: 0.875rem;
   color: #ffcc00; /* Yellow for visibility */
   text-shadow: -0.0625rem -0.0625rem 0 #000, 0 -0.0625rem 0 #000, 0.0625rem -0.0625rem 0 #000, 0.0625rem 0 0 #000, 0.0625rem 0.0625rem 0 #000, 0 0.0625rem 0 #000, -0.0625rem 0.0625rem 0 #000, -0.0625rem 0 0 #000;
-  margin-right: 0.5rem; /* Space between damage and DPS */
-  width: 4rem; /* Fixed width for alignment */
+  margin-right: 0.5rem;
+  width: 4.5rem; /* Slightly increased for large damage numbers */
+  text-align: right;
+}
+
+.dps-bar-tohit {
+  font-size: 0.875rem;
+  color: #66ccff; /* Light blue for visibility */
+  text-shadow: -0.0625rem -0.0625rem 0 #000, 0 -0.0625rem 0 #000, 0.0625rem -0.0625rem 0 #000, 0.0625rem 0 0 #000, 0.0625rem 0.0625rem 0 #000, 0 0.0625rem 0 #000, -0.0625rem 0.0625rem 0 #000, -0.0625rem 0 0 #000;
+  margin-right: 0.5rem;
+  width: 3rem;
   text-align: right;
 }
 
@@ -191,7 +200,7 @@ a {
   font-size: 0.875rem;
   color: #9ddfa2;
   text-shadow: -0.0625rem -0.0625rem 0 #000, 0 -0.0625rem 0 #000, 0.0625rem -0.0625rem 0 #000, 0.0625rem 0 0 #000, 0.0625rem 0.0625rem 0 #000, 0 0.0625rem 0 #000, -0.0625rem 0.0625rem 0 #000, -0.0625rem 0 0 #000;
-  width: 4rem; /* Fixed width for alignment */
+  width: 4.5rem; /* Slightly increased for consistency */
   text-align: right;
 }
 
@@ -323,6 +332,7 @@ a {
   top: 0;
   left: 0;
   padding: 0 0.5rem;
+  white640: inherit;
   white-space: nowrap;
 }
 

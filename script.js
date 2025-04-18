@@ -98,16 +98,21 @@ function updateDPSMeter(data) {
     name.className = 'dps-bar-label'
     name.textContent = combatant.name
 
-    const damage = document.createElement('span') // New total damage element
+    const damage = document.createElement('span')
     damage.className = 'dps-bar-damage'
     damage.textContent = nf.format(currentDamage)
+
+    const tohit = document.createElement('span')
+    tohit.className = 'dps-bar-tohit'
+    tohit.textContent = combatant['tohit'] ? combatant['tohit'] + '%' : '0%' // Append % to tohit
 
     const dps = document.createElement('span')
     dps.className = 'dps-bar-value'
     dps.textContent = `${nf.format(combatant.DPS === '∞' ? 0 : combatant.DPS)}/sec`
 
     barContent.appendChild(name)
-    barContent.appendChild(damage) // Add total damage before DPS
+    barContent.appendChild(damage)
+    barContent.appendChild(tohit)
     barContent.appendChild(dps)
     dpsBar.appendChild(gradientBg)
     dpsBar.appendChild(barContent)
