@@ -24,6 +24,11 @@ function formatAccuracy(value) {
   return round(value, 1).toFixed(1) + '%';
 }
 
+function formatCritrate(value) {
+	if (value === '0%') return '';
+	return value;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const q = new URLSearchParams(this.location.search);
 
@@ -110,7 +115,7 @@ function updateDPSMeter(data) {
 
     const critrate = document.createElement('span')
     critrate.className = 'dps-bar-critrate'
-    critrate.textContent = combatant['crithit%'] ? combatant['crithit%'] : '0%'
+    critrate.textContent = combatant['crithit%'] ? formatCritrate(combatant['crithit%']) : ''
 
     const tohit = document.createElement('span')
     tohit.className = 'dps-bar-tohit'
