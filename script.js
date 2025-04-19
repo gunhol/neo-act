@@ -99,13 +99,8 @@ function updateDPSMeter(data) {
 
     let gradientBg = document.createElement('div')
     gradientBg.className = 'gradient-bg'
-    
-    if (combatant.name === 'Shaddy') {
-      gradientBg.classList.add('rgb-gradient')
-      gradientBg.style.clipPath = `inset(0 ${100 - widthPercentage}% 0 0)`
-    } else {
-      gradientBg.style.clipPath = `inset(0 ${100 - widthPercentage}% 0 0)`
-    }
+
+    gradientBg.style.clipPath = `inset(0 ${100 - widthPercentage}% 0 0)`
 
     let barContent = document.createElement('div')
     barContent.className = 'bar-content'
