@@ -21,13 +21,18 @@ function round(value, precision) {
 
 function formatAccuracy(value) {
   value = value.replace(/,/g, '.'); // handle comma-decimals
-  if (value === '100.00') return '';
-  return round(value, 1).toFixed(1) + '%';
+  if (isNaN(value) || value === '100.00') return '';
+  return nf.format(round(value, 1).toFixed(1)) + '%';
 }
 
 function formatCritrate(value) {
 	if (value === '0%') return '';
 	return value;
+}
+
+function formatDps(value) {
+	if (isNaN(value)) return '0/sec';
+	return nf.format(value) + '/sec';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -119,7 +124,7 @@ function updateDPSMeter(data) {
 
     const dps = document.createElement('span')
     dps.className = 'dps-bar-value'
-    dps.textContent = `${nf.format(combatant.DPS === '∞' ? 0 : combatant.DPS)}/sec`
+    dps.textContent = formatDps(combatant.DPS)
 
     barContent.appendChild(name)
     barContent.appendChild(tohit)
