@@ -75,14 +75,29 @@ function updateDPSMeter(data) {
   table.innerHTML = ''
 
   let combatants = Object.values(data.Combatant)
-  combatants.sort((a, b) => parseFloat(b['damage']) - parseFloat(a['damage']))
+  
+  // Convert string damage values to numbers properly by removing commas
+  combatants.forEach(combatant => {
+    if (typeof combatant.damage === 'string') {
+      // Remove commas and convert to number
+      combatant.damage = Number(combatant.damage.replace(/,/g, ''))
+    }
+    
+    if (typeof combatant.DPS === 'string' && combatant.DPS !== '∞') {
+      // Remove commas and convert to number
+      combatant.DPS = Number(combatant.DPS.replace(/,/g, ''))
+    }
+  })
+  
+  // Sort by damage value (now as numbers, not strings)
+  combatants.sort((a, b) => b.damage - a.damage)
 
   const maxDamage = combatants.length > 0 
-    ? Math.max(...combatants.map((c) => parseFloat(c['damage']) || 0)) 
+    ? Math.max(...combatants.map((c) => c.damage || 0)) 
     : 0
 
   combatants.forEach((combatant) => {
-    const currentDamage = parseFloat(combatant['damage']) || 0
+    const currentDamage = combatant.damage || 0
     const widthPercentage = maxDamage > 0 
       ? (currentDamage / maxDamage) * 100 
       : 0
@@ -90,12 +105,10 @@ function updateDPSMeter(data) {
     let playerDiv = document.createElement('div')
     
     playerDiv.setAttribute('data-player', combatant.name)
-    playerDiv.addEventListener('mouseenter', (event) => showSkills(combatant, event))
-    playerDiv.addEventListener('mouseleave', hideSkills)
     
     playerDiv.classList.add('player')
 
-    if (combatant.name === 'You') {
+    if (combatant.name === 'You' || combatant.isSelf === "true") {
       playerDiv.classList.add('you')
     }
 
